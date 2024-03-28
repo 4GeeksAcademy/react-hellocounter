@@ -1,12 +1,40 @@
 
-/* 
+body{
+    background-color: black;
 
-    You can write your own styles here...
+}
+.contador div{
+    background-color: rgb(160, 36, 36);font-size: 30px;display: inline-block;
+}
+.contador{ 
+    text-align: center;
+}
+.contadorPositivo div{
+    font-size: 30px;
+    display: inline-block;
+    color: white;
     
+}
+.tituloPositivo{
+    color: rgb(12, 194, 40);     
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;    
+        margin-top: 50px;  
+        margin-left: 120px;    
+        
+}
+.wrapperPositivo{
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        color: aliceblue;
+}
+.contador{
+    margin-top: 300px;
+}
+.cuentaAdelante{   
+    border: solid 3px ;
+    text-align: center;
     
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+}
