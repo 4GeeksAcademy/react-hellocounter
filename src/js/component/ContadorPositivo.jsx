@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types"
 import { Boton } from "./Boton";
-
+import musica from "../../sonidos/salir.mp3"
 
 
 // include your styles into the webpack bundle
@@ -15,6 +15,7 @@ import { Boton } from "./Boton";
 function ContadorPositivo(props) {
     return (
         <>
+            <audio autoPlay loop src={musica}/>
             <h3 className="tituloPositivo pb-2">Para muchos la vida es galopar un camino empedrado de horas, minutos y segundos...</h3>
             <div className="wrapperPositivo">
                 <div className="contadorPositivo">

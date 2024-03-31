@@ -23,7 +23,7 @@ body {
     width: 100ch;
     white-space: nowrap;
 
-    animation: typing 7s steps(100),
+    animation: typing 10s steps(100),
         blink .5s infinite step-end alternate;
     overflow: hidden;
 }
@@ -63,7 +63,7 @@ body {
     width: 100ch;
     white-space: nowrap;
 
-    animation: typing 7s steps(100),
+    animation: typing 14s steps(100),
         blink .5s infinite step-end alternate;
     overflow: hidden;
 }
@@ -112,4 +112,42 @@ body {
     margin-bottom: 40px;
     box-shadow: 0px 0px 5px 5px yellow;
     
+}
+.cajaMatrix{
+    border:3px double red;
+    width: 500px;
+    height: 200px;
+    position: fixed;    
+    color: white;
+    background-color: black;
+    left: 29%;
+    top:30%;
+    font-family: "Pacifico", cursive;
+    white-space: nowrap;
+
+    animation: typing 10s steps(100),
+        blink .5s infinite step-end alternate;
+    overflow: hidden;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+.matrix{
+    z-index: -1;
+}
+.gameover{
+    font-family: "Anton", sans-serif;
+    font-style: oblique;
+   color: red;
+   text-decoration: underline;
+   
 }

@@ -6,76 +6,76 @@ import ContadorNegativo from "./component/ContadorNegativo";
 import {useState,useEffect} from "react";
 import "../styles/index.css";
 import swal from 'sweetalert';
-import { GameOver } from "./component/GameOver";
+import GameOver from "./component/GameOver";
 
 
-let  gameOver=false;
 
 
-function SimpleCounter(props){
-   
-    
-    return(
+let gameIsOver = false;
+
+const renderApp = () => {
+  if (gameIsOver) {
+    ReactDOM.render(<GameOver />, document.querySelector("#app"));
+  } else {
+    let counterup = 0;
+    let counterdown = 5000;
+    const intervalOfId = setInterval(() => {
+      const four = Math.floor(counterup / 1000) % 10;
+      const three = Math.floor((counterup % 1000) / 100) % 10;
+      const two = Math.floor((counterup % 100) / 10) % 10;
+      const one = counterup % 10;
+      
+      const fourdown = Math.floor(counterdown / 1000) % 10;
+      const threedown= Math.floor((counterdown % 1000) / 100) % 10;
+      const twodown = Math.floor((counterdown % 100) / 10) % 10;
+      const onedown = counterdown % 10;
+      
+      ReactDOM.render(
         <>
-            
-            <div className="contador">                          
-                <div className="four">{props.digitFour % 10}</div>
-                <div className="three">{props.digitThree % 10}</div>
-                <div className="two">{props.digitTwo % 10}</div>
-                <div className="one">{props.digitOne % 10}</div>        
-            </div>             
-            <div>       
-                <ContadorPositivo digitOne={props.digitOne} digitTwo={props.digitTwo} digitThree={props.digitThree} digitFour={digitFour}/>
-            </div>  
+          
+          <ContadorPositivo digitOne={one} digitTwo={two} digitThree={three} digitFour={four}/>
+          <ContadorNegativo digitOne={onedown} digitTwo={twodown} digitThree={threedown} digitFour={fourdown}/>
+          <button onClick={() => stopCounterUp(intervalOfId)} className="BotonAlerta">Para el Tiempo!!</button>
+         
+        </>,
+        document.querySelector("#app")
+      );
+      
+      counterup++;
+      counterdown--;
 
-            </>         
-        );
-}
+      if (counterdown <= 0) {
+        stopCounterUp(intervalOfId);
+      }
+    }, 200);
+  }
+};
+const stopCounterUp = (intervalId) => {
+  clearInterval(intervalId);
+  gameIsOver = true; 
+  swal({
+    title: "Amig@s el tiempo ha parado, pero...",
+    text: "La VIDA no para... ¡Espabila!",
+    icon: "warning",
+    button: "Hahahaha!!!",
+  }).then(() => {
+    renderApp(); 
+  });
+};
+renderApp();
 
 
 
 
 
 
-let counterup = 0;
-let counterdown =5000;
 
-const intervalOfId = setInterval(function(){
-    const four = Math.floor(counterup / 1000);
-	const three = Math.floor(counterup /100);
-	const two = Math.floor(counterup / 10);
-	const one = Math.floor(counterup / 1);
-    const fourdown = Math.floor(counterdown / 1000);
-	const threedown= Math.floor(counterdown /100);
-	const twodown = Math.floor(counterdown /10);
-	const onedown = Math.floor(counterdown / 1);
-   
-    ReactDOM.render(
-                <>         
-                                                 
-                    <ContadorPositivo digitOne={one} digitTwo={two} digitThree={three} digitFour={four}/>                     
-                    <ContadorNegativo digitOne={onedown} digitTwo={twodown} digitThree={threedown} digitFour={fourdown}/>
-                    <button onClick={stopCounterUp} className="BotonAlerta">Para el Tiempo!!</button>   
-                    <a href="https://www.youtube.com/watch?v=3SnZIkYbklQ" className="btn btn-primary" target="_blank" type="button" >Y  si ... se te acaba el tiempo...</a>
-                    
-                </>,
-            document.querySelector("#app"));
-    counterup ++;
-    counterdown --; 
-   
-	},1000/5);
 
-    const stopCounterUp = () => {
-        clearInterval(intervalOfId);
-        swal({
-            title:"Amig@s el tiempo ha parado, pero...",
-            text:"La VIDA no para...Espabila!!!!",
-            icon:"warning",
-            buttons:"Hahahaha!!!"
-        })
-    };
-  
-    
+
+
+
+
+
 
   
       
