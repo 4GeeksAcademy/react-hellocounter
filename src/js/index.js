@@ -5,11 +5,11 @@ import ContadorPositivo from "./component/ContadorPositivo";
 import ContadorNegativo from "./component/ContadorNegativo";
 import {useState,useEffect} from "react";
 import "../styles/index.css";
-import swal from 'sweetalert';
+import swal from 'sweetalert';                
 import GameOver from "./component/GameOver";
 
 
-
+const edad = prompt("introduce tu edad?");
 
 let gameIsOver = false;
 
@@ -17,8 +17,9 @@ const renderApp = () => {
   if (gameIsOver) {
     ReactDOM.render(<GameOver />, document.querySelector("#app"));
   } else {
-    let counterup = 0;
-    let counterdown = 5000;
+    
+    let counterup = edad;
+    let counterdown = 1000;
     const intervalOfId = setInterval(() => {
       const four = Math.floor(counterup / 1000) % 10;
       const three = Math.floor((counterup % 1000) / 100) % 10;
@@ -58,6 +59,7 @@ const stopCounterUp = (intervalId) => {
     text: "La VIDA no para... ¡Espabila!",
     icon: "warning",
     button: "Hahahaha!!!",
+    
   }).then(() => {
     renderApp(); 
   });
@@ -80,5 +82,4 @@ renderApp();
   
       
        
-    
-//import your own components
+

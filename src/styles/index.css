@@ -151,3 +151,7 @@ body {
    text-decoration: underline;
    
 }
+.swal-modal{
+    height: 300px !important;
+    background-color: rgb(232, 158, 247);
+}
